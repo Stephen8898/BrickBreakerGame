@@ -44,7 +44,6 @@ export default class Game {
         this.bricks = buildLevel(this, this.levels[this.currentLevel]);
         this.ball.reset();
         this.gameObjects = [this.ball, this.paddel];
-
         this.gamestate = GAMESTATE.RUNNING;
     }
 

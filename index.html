@@ -12,19 +12,24 @@
         img {
             display: none;
         }
-       
+       small {
+           margin-left: 150px;
+       }
     </style>
 </head>
 <body>
     <img id="ball-img" src="./images/ball-img.png">
     <img id="brick-img" src="./images/brick-sprite.webp">
-    <!-- This is where are game will be drawn -->
     <h1 id="Game-state"></h1>
     <p>Lives: <span id="lives"></span></p> 
-    <p>Levels: <span id="level"></span></p>
-    <canvas id="gamescreen" height="500px" width="600px">
+    <p>Levels: <span id="level"></span><small>Press spacebar to pause</small></p>
+    <!-- This is where are game will be drawn -->
+    <canvas id="gamescreen" height="500px" width="600px"></canvas>
 
-    </canvas>
+    <audio controls autoplay loop hidden>  
+    <source id="music" src="./music/'Indian' Chill Guitar Old School Hip Hop Instrumentals Rap Beat.mp3" type="audio/mpeg">
+    </audio>
     <script type="module" src="./src/index.js"></script>
+
 </body>
 </html>
