@@ -7,11 +7,15 @@ export default class Ball {
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;
 
+        this.size = 18;
         this.position = {x: 100, y: 170};
         this.speed = {x: 4, y: 4};
-        this.size = 18;
-
         this.game = game;
+    }
+
+    reset(){
+        this.position = {x: 100, y: 170};
+        this.speed = {x: 4, y: 4};
     }
 
     draw(context){      
@@ -34,7 +38,8 @@ export default class Ball {
 
         // wall on the bottom
         if(this.position.y + this.size > this.gameHeight){
-            this.game.lives--;
+            this.game.lives-= 1;
+            this.reset();
         }
 
         if(collison(this, this.game.paddel)){
