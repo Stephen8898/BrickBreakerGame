@@ -31,7 +31,7 @@ export default class Game {
     update(deltaTime){
         this.gameObjects.forEach(object => object.update(deltaTime));
 
-        this.gameObjects = this.gameObjects.filter(object => !object.destroyBrick);
+       this.gameObjects = this.gameObjects.filter(object => !object.destoryBrick);
     }
 
     draw(context){

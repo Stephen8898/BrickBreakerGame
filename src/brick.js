@@ -17,10 +17,6 @@ export default class Brick {
         this.destoryBrick = false;
     }
 
-    draw(context){
-        context.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
-    }
-
     update(){
 
         if(collison(this.game.ball, this)){
@@ -30,4 +26,10 @@ export default class Brick {
         }
 
     }
+
+    draw(context){
+        context.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
+    }
+
+    
 }
