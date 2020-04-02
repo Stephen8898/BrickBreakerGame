@@ -87,7 +87,7 @@ export default class Game {
              context.fill();
             document.getElementById("Game-state").innerHTML = "Press Shift to Start";
             document.getElementById('lives').innerHTML = this.lives;
-            document.getElementById('level').innerHTML = this.currentLevel;
+            document.getElementById('level').innerHTML = this.currentLevel + 1;
             // context.fillStyle = '#1a0000';
             // context.fillRect(this.gameWidth, this.gameHeight);
         }else if(this.gamestate == GAMESTATE.GAMEOVER){
