@@ -50,7 +50,7 @@ export default class Game {
 
     update(deltaTime){
 
-        if(this.lives === 0 || this.currentLevel + 1 == this.levels.length) this.gamestate = GAMESTATE.GAMEOVER;
+        if(this.lives === 0 || this.currentLevel === this.levels.length -1) this.gamestate = GAMESTATE.GAMEOVER;
 
         if (this.gamestate === GAMESTATE.PAUSED 
             || this.gamestate === GAMESTATE.MENU 
@@ -67,7 +67,7 @@ export default class Game {
         this.gameObjects.forEach(object => object.update(deltaTime));
         this.bricks.forEach(brick => brick.update(deltaTime));
         document.getElementById('lives').innerHTML = this.lives;
-        document.getElementById('level').innerHTML = this.currentLevel;
+        document.getElementById('level').innerHTML = this.currentLevel + 1;
 
        this.bricks = this.bricks.filter(brick => !brick.destoryBrick);
 
