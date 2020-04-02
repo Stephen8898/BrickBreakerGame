@@ -1,7 +1,7 @@
 import Paddel from './paddel.js';
 import InputHanlder from './input.js';
 import Ball from './ball.js';
-import {buildLevel, level1, level2} from './levels.js';
+import {buildLevel, level1, level2, level3} from './levels.js';
 // import Brick from './brick.js';
 
 
@@ -30,7 +30,7 @@ export default class Game {
         
         this.lives = 4;
 
-        this.levels = [level1,level2];
+        this.levels = [level1,level2, level3];
 
         this.currentLevel = 0;
 
@@ -67,6 +67,7 @@ export default class Game {
         this.gameObjects.forEach(object => object.update(deltaTime));
         this.bricks.forEach(brick => brick.update(deltaTime));
         document.getElementById('lives').innerHTML = this.lives;
+        document.getElementById('level').innerHTML = this.currentLevel;
 
        this.bricks = this.bricks.filter(brick => !brick.destoryBrick);
 
@@ -85,6 +86,7 @@ export default class Game {
              context.fill();
             document.getElementById("Game-state").innerHTML = "Press Shift to Start";
             document.getElementById('lives').innerHTML = this.lives;
+            document.getElementById('level').innerHTML = this.currentLevel;
             // context.fillStyle = '#1a0000';
             // context.fillRect(this.gameWidth, this.gameHeight);
         }else if(this.gamestate == GAMESTATE.GAMEOVER){
