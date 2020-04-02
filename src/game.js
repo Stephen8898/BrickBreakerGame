@@ -50,6 +50,12 @@ export default class Game {
     draw(context){
         //draws game objects
         this.gameObjects.forEach(object => object.draw(context));
+
+        if(this.gamestate == GAMESTATE.PAUSED){
+           document.getElementById("Game-state").innerHTML = "GAME PAUSED";
+        }else {
+            document.getElementById("Game-state").innerHTML = "GAME RUNNING";
+        }
         
     }
 

@@ -13,7 +13,8 @@ export default class InputHandler {
                      paddel.moveRight();
                     break;
 
-                case 32:
+                    //pause listener feature to game state
+                case 32: 
                     game.togglePause();
                     break;  
 
