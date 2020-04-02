@@ -30,7 +30,7 @@ export default class Game {
         
         this.lives = 4;
 
-        this.levels = [level1,level2, level3];
+        this.levels = [level1, level2, level3];
 
         this.currentLevel = 0;
 
@@ -50,12 +50,6 @@ export default class Game {
 
 
     update(deltaTime){
-        // Handels game level by cheking brick array length
-        if(this.bricks.length === 0){
-            this.currentLevel++;
-            this.gamestate = GAMESTATE.NEWLEVEL;
-            this.start();
-        }
 
         if(this.lives === 0) this.gamestate = GAMESTATE.GAMEOVER;
 
@@ -63,6 +57,13 @@ export default class Game {
             || this.gamestate === GAMESTATE.MENU 
             || this.gamestate === GAMESTATE.GAMEOVER
             ) return;
+
+         // // Handels game level by cheking brick array length
+        if(this.bricks.length === 0){
+            this.currentLevel+=1;
+            this.gamestate = GAMESTATE.NEWLEVEL;
+            this.start();
+        }
 
         this.gameObjects.forEach(object => object.update(deltaTime));
         this.bricks.forEach(brick => brick.update(deltaTime));

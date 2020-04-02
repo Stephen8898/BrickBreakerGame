@@ -2,7 +2,7 @@ export default class InputHandler {
 
     constructor(paddel, game){
         document.addEventListener('keydown', e => {
-            console.log(e.keyCode) 
+            // console.log(e.keyCode)
             switch(e.keyCode){
 
                 case 37:
