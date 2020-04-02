@@ -26,11 +26,15 @@ export default class Game {
          this.paddel = new Paddel(this); 
          this.ball = new Ball(this);
     
+        this.lives = 2;
+
          new InputHanlder(this.paddel, this);
 
     }
 
     start(){ 
+        if(this.gamestate !== GAMESTATE.MENU) return;
+
 
         let bricks = buildLevel(this, level1);
         this.gameObjects = [this.ball, this.paddel, ...bricks];
@@ -40,7 +44,13 @@ export default class Game {
 
 
     update(deltaTime){
-        if (this.gamestate === GAMESTATE.PAUSED || this.gamestate === GAMESTATE.MENU) return;
+
+        if(this.lives === 0) this.gamestate = GAMESTATE.GAMEOVER;
+
+        if (this.gamestate === GAMESTATE.PAUSED 
+            || this.gamestate === GAMESTATE.MENU 
+            || this.gamestate === GAMESTATE.GAMEOVER
+            ) return;
 
         this.gameObjects.forEach(object => object.update(deltaTime));
 
@@ -51,15 +61,20 @@ export default class Game {
         //draws game objects
         this.gameObjects.forEach(object => object.draw(context));
 
-        if(this.gamestate == GAMESTATE.PAUSED){
-           document.getElementById("Game-state").innerHTML = "GAME PAUSED";
+        if(this.gamestate === GAMESTATE.PAUSED){
+           document.getElementById("Game-state").innerHTML = "Game Paused";
         }else if(this.gamestate == GAMESTATE.MENU){
             document.getElementById("Game-state").innerHTML = "Press Enter to Start";
             // context.fillStyle = '#1a0000';
             // context.fillRect(this.gameWidth, this.gameHeight);
+        }else if(this.gamestate == GAMESTATE.GAMEOVER){
+            context.rect(0,0, this.gameWidth, this.gameHeight);
+            context.fillStyle = "rgba(0,0,0,1)"
+             context.fill();
+             document.getElementById("Game-state").innerHTML = "Game Over";
         }
         else {
-            document.getElementById("Game-state").innerHTML = "GAME RUNNING";
+            document.getElementById("Game-state").innerHTML = "Game Running";
         }
         
     }

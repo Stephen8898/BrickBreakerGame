@@ -27,8 +27,14 @@ export default class Ball {
             this.speed.x = -this.speed.x;
         }
 
-        if(this.position.y + this.size > this.gameHeight || this.position.y < 0){
+        // wall on top
+        if(this.position.y < 0){
             this.speed.y = -this.speed.y;
+        }
+
+        // wall on the bottom
+        if(this.position.y + this.size > this.gameHeight){
+            this.game.lives--;
         }
 
         if(collison(this, this.game.paddel)){
