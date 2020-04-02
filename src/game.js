@@ -19,28 +19,28 @@ export default class Game {
     constructor(gameWidth, gameHeight){
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
+        //Game menu state
+        this.gamestate = GAMESTATE.MENU;
+        this.gameObjects = [];
+         // instance of the paddel object
+         this.paddel = new Paddel(this); 
+         this.ball = new Ball(this);
+    
+         new InputHanlder(this.paddel, this);
 
     }
 
-    start(){
-        // instance of the paddel object
-        this.gamestate = GAMESTATE.RUNNING;
-        this.paddel = new Paddel(this); 
-        this.ball = new Ball(this);
-   
-
+    start(){ 
 
         let bricks = buildLevel(this, level1);
-        
-
         this.gameObjects = [this.ball, this.paddel, ...bricks];
 
-        new InputHanlder(this.paddel, this);
+        this.gamestate = GAMESTATE.RUNNING;
     }
 
 
     update(deltaTime){
-        if (this.gamestate == GAMESTATE.PAUSED) return;
+        if (this.gamestate === GAMESTATE.PAUSED || this.gamestate === GAMESTATE.MENU) return;
 
         this.gameObjects.forEach(object => object.update(deltaTime));
 
@@ -53,7 +53,12 @@ export default class Game {
 
         if(this.gamestate == GAMESTATE.PAUSED){
            document.getElementById("Game-state").innerHTML = "GAME PAUSED";
-        }else {
+        }else if(this.gamestate == GAMESTATE.MENU){
+            document.getElementById("Game-state").innerHTML = "Press Enter to Start";
+            // context.fillStyle = '#1a0000';
+            // context.fillRect(this.gameWidth, this.gameHeight);
+        }
+        else {
             document.getElementById("Game-state").innerHTML = "GAME RUNNING";
         }
         
@@ -62,7 +67,7 @@ export default class Game {
 
     togglePause(){
         // Game state
-        if(this.gamestate == GAMESTATE.PAUSED){
+        if(this.gamestate === GAMESTATE.PAUSED ){
             this.gamestate = GAMESTATE.RUNNING;
         }
         else {

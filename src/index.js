@@ -12,7 +12,6 @@ const GAME_WIDTH = 600;
 const GAME_HEIGHT = 500;
 
 let game = new Game(GAME_WIDTH, GAME_HEIGHT);
-game.start();
  
 //draw square to the canvas
 //position: x,y || object-size: w,h
