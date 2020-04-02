@@ -28,13 +28,11 @@ export default class Game {
     
         this.lives = 4;
 
-         new InputHanlder(this.paddel, this);
-
+        new InputHanlder(this.paddel, this);
     }
-
+    
     start(){ 
         if(this.gamestate !== GAMESTATE.MENU) return;
-
 
         let bricks = buildLevel(this, level1);
         this.gameObjects = [this.ball, this.paddel, ...bricks];
@@ -53,6 +51,7 @@ export default class Game {
             ) return;
 
         this.gameObjects.forEach(object => object.update(deltaTime));
+        document.getElementById('lives').innerHTML = this.lives;
 
        this.gameObjects = this.gameObjects.filter(object => !object.destoryBrick);
     }
@@ -64,7 +63,8 @@ export default class Game {
         if(this.gamestate === GAMESTATE.PAUSED){
            document.getElementById("Game-state").innerHTML = "Game Paused";
         }else if(this.gamestate == GAMESTATE.MENU){
-            document.getElementById("Game-state").innerHTML = "Press Enter to Start";
+            document.getElementById("Game-state").innerHTML = "Press Shift to Start";
+            document.getElementById('lives').innerHTML = this.lives;
             // context.fillStyle = '#1a0000';
             // context.fillRect(this.gameWidth, this.gameHeight);
         }else if(this.gamestate == GAMESTATE.GAMEOVER){
