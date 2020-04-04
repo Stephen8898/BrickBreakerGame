@@ -1,7 +1,7 @@
 import Paddel from './paddel.js';
 import InputHanlder from './input.js';
 import Ball from './ball.js';
-import {buildLevel, level1, level2, level3} from './levels.js';
+import {buildLevel, level1, level2, level3, level4, level5, level6, level7} from './levels.js';
 // import Brick from './brick.js';
 
 
@@ -11,7 +11,8 @@ const GAMESTATE = {
     RUNNING: 1,
     MENU: 2,
     GAMEOVER: 3,
-    NEWLEVEL: 4
+    NEWLEVEL: 4,
+    WIN: 5
 
 }
 
@@ -30,7 +31,7 @@ export default class Game {
         
         this.lives = 4;
 
-        this.levels = [level1, level2, level3];
+        this.levels = [level1, level2, level3, level4, level5, level6,level7];
 
         this.currentLevel = 0;
 
@@ -50,13 +51,18 @@ export default class Game {
 
     update(deltaTime){
 
-        if(this.lives === 0 || this.currentLevel === this.levels.length -1) this.gamestate = GAMESTATE.GAMEOVER;
-
         if (this.gamestate === GAMESTATE.PAUSED 
             || this.gamestate === GAMESTATE.MENU 
             || this.gamestate === GAMESTATE.GAMEOVER
             ) return;
 
+        if(this.lives === 0){
+            this.gamestate = GAMESTATE.GAMEOVER;
+        }
+
+        if(this.currentLevel === this.levels.length-1){
+            this.gamestate = GAMESTATE.WIN;
+        }
          // // Handels game level by cheking brick array length
         if(this.bricks.length === 0){
             this.currentLevel+=1;
@@ -80,7 +86,7 @@ export default class Game {
 
         if(this.gamestate === GAMESTATE.PAUSED){
            document.getElementById("Game-state").innerHTML = "Game Paused";
-        }else if(this.gamestate == GAMESTATE.MENU){
+        }else if(this.gamestate === GAMESTATE.MENU){
             context.rect(0,0, this.gameWidth, this.gameHeight);
             context.fillStyle = "rgba(0,0,0,1)"
              context.fill();
@@ -89,11 +95,16 @@ export default class Game {
             document.getElementById('level').innerHTML = this.currentLevel + 1;
             // context.fillStyle = '#1a0000';
             // context.fillRect(this.gameWidth, this.gameHeight);
-        }else if(this.gamestate == GAMESTATE.GAMEOVER){
+        }else if(this.gamestate === GAMESTATE.GAMEOVER){
             context.rect(0,0, this.gameWidth, this.gameHeight);
             context.fillStyle = "rgba(0,0,0,1)"
              context.fill();
              document.getElementById("Game-state").innerHTML = "Game Over";
+        } else if (this.gamestate === GAMESTATE.WIN){
+            context.rect(0,0, this.gameWidth, this.gameHeight);
+            context.fillStyle = "rgba(0,0,0,1)"
+             context.fill();
+            document.getElementById("Game-state").innerHTML = "You win!";
         }
         else {
             document.getElementById("Game-state").innerHTML = "Game Running";
