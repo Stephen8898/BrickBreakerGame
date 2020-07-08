@@ -1,7 +1,7 @@
 import Paddel from './paddel.js';
 import InputHanlder from './input.js';
 import Ball from './ball.js';
-import {buildLevel, level1, level2, level3, level4, level5, level6, level7} from './levels.js';
+import {buildLevel, level1, level2, level3, level4, level5, level6, level7, level8} from './levels.js';
 // import Brick from './brick.js';
 
 
@@ -31,7 +31,7 @@ export default class Game {
         
         this.lives = 4;
 
-        this.levels = [level1, level2, level3, level4, level5, level6,level7];
+        this.levels = [level1, level2, level3, level4, level5, level6,level7, level8];
 
         this.currentLevel = 0;
 

@@ -6,8 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Game</title>
     <style>
-        #gamescreen {
+        #gamescreen{
             border: 1px solid black;
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            display: block;
+        }
+        #board {
+            position: absolute;
+            display: block;
         }
         img {
             display: none;
@@ -20,14 +30,16 @@
 <body>
     <img id="ball-img" src="./images/ball-img.png">
     <img id="brick-img" src="./images/brick-sprite.webp">
-    <h1 id="Game-state"></h1>
-    <p>Lives: <span id="lives"></span></p> 
-    <p>Levels: <span id="level"></span><small>Press spacebar to pause</small></p>
+    <div id="board">
+        <h1 id="Game-state"></h1>
+        <p>Lives: <span id="lives"></span></p> 
+        <p>Levels: <span id="level"></span><small>Press spacebar to pause</small></p>   
+    </div>
     <!-- This is where are game will be drawn -->
     <canvas id="gamescreen" height="500px" width="600px"></canvas>
 
     <audio autoplay loop>  
-    <source id="music" src="./music/IndianChill.mp3" type="audio/mpeg">
+        <source id="music" src="/sounds/music/melodyloops-preview-energy-express-2m30s.mp3" type="audio/mpeg">
     </audio>
     <script type="module" src="./src/index.js"></script>
 
