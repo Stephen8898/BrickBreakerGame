@@ -7,9 +7,9 @@ let canvas = document.getElementById('gamescreen');
 let context = canvas.getContext('2d');
 
 
-const GAME_WIDTH = 600;
+const GAME_WIDTH = canvas.clientWidth;
 
-const GAME_HEIGHT = 500;
+const GAME_HEIGHT = canvas.clientHeight;
 
 let game = new Game(GAME_WIDTH, GAME_HEIGHT);
  
