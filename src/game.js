@@ -67,6 +67,7 @@ export default class Game {
 
         if(this.lives === 0){
             this.gamestate = GAMESTATE.GAMEOVER;
+            this.music.pause();
         }
 
         if(this.currentLevel === this.levels.length-1){
