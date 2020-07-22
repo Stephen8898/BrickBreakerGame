@@ -3,9 +3,10 @@ import {collison} from './collisonDetection.js';
 export default class Ball {
     constructor(game){
         this.image = document.getElementById('ball-img');
-        this.collide = new Audio('../sounds/nutfall.flac');
-        this.wallSfx = new Audio('../sounds/zapsplat_impact_thud_hit_hard_rubber_002_47002.mp3');
-        this.loseSfx = new Audio('../sounds/negative-game-hit-01-sound-effect-47344971.mp3');
+        this.collide = document.getElementById("collide");
+        this.wallSfx = document.getElementById("wallSfx");
+        this.loseSfx = document.getElementById("loseSfx");
+
 
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;

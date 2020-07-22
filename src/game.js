@@ -23,7 +23,8 @@ export default class Game {
         this.gameHeight = gameHeight;
 
         //Game Background music
-        this.music = new Audio("../sounds/music/melodyloops-preview-energy-express-2m30s.mp3");
+        // this.music = new Audio("../sounds/music/melodyloops-preview-energy-express-2m30s.mp3");
+        this.music = document.getElementById("music");
 
         //Game menu state
         this.gamestate = GAMESTATE.MENU;

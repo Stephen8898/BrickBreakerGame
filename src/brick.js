@@ -3,7 +3,7 @@ import {collison} from './collisonDetection.js';
 export default class Brick {
     constructor(game, position){
         this.image = document.getElementById('brick-img');
-        this.bickSfx = new Audio('../sounds/Rock-Impact-Cinder Block-Heavy 2.mp3');
+        this.bickSfx = document.getElementById("brickSfx");
 
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;

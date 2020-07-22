@@ -29,7 +29,7 @@
             position: absolute;
             display: block;
         } */
-        #ball-img, #brick-img{
+        #ball-img, #brick-img, #img{
             display: none;
         }
        small {
@@ -40,6 +40,13 @@
 <body>
     <img id="ball-img" src="./images/ball-img3.gif">
     <img id="brick-img" src="./images/brick-sprite.webp">
+    <img id="img" src="./images/giphy-brickWall.gif">
+    <img id="img" src="./images/Giphy-wall2.gif">
+    <audio id="music" src="./sounds/music/melodyloops-preview-energy-express-2m30s.mp3" type="audio/mpeg" ></audio>
+    <audio id="brickSfx" src="./sounds/Rock-Impact-Cinder Block-Heavy 2.mp3" type="audio/mpeg"></audio>
+    <audio id="collide" src="sounds/nutfall.flac" type="audio/mpeg"></audio>
+    <audio id="wallSfx" src="sounds/zapsplat_impact_thud_hit_hard_rubber_002_47002.mp3" type="audio/mpeg"></audio>
+    <audio id="loseSfx" src="sounds/negative-game-hit-01-sound-effect-47344971.mp3" type="audio/mpeg"></audio>
     <div id="board">
         <h1 id="Game-state"></h1>
         <p>Lives: <span id="lives"></span></p> 
