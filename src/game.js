@@ -38,7 +38,7 @@ export default class Game {
 
         this.levels = [level1, level2, level3, level4, level5, level6,level7, level8];
 
-        this.backGImg = ["/BrickBreakerGame/images/giphy-brickWall.gif", "/BrickBreakerGame//images/Giphy-wall2.gif"];
+        this.backGImg = [document.getElementById("img1").src, document.getElementById("img2").src];
         this.img = 0;
 
         this.currentLevel = 0;
@@ -56,6 +56,7 @@ export default class Game {
         this.gamestate = GAMESTATE.RUNNING;
         this.music.play();
         this.music.loop = true;
+        // console.log(document.getElementById("img1").);
     }
 
 
