@@ -38,7 +38,7 @@ export default class Game {
 
         this.levels = [level1, level2, level3, level4, level5, level6,level7, level8];
 
-        this.backGImg = ["../images/giphy-brickWall.gif", "../images/Giphy-wall2.gif"];
+        this.backGImg = ["/BrickBreakerGame/images/giphy-brickWall.gif", "/BrickBreakerGame//images/Giphy-wall2.gif"];
         this.img = 0;
 
         this.currentLevel = 0;
