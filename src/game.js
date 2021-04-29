@@ -138,7 +138,10 @@ export default class Game {
         // Game state
         if(this.gamestate === GAMESTATE.PAUSED ){
             this.gamestate = GAMESTATE.RUNNING;
-        }
+        }else if (this.gamestate === GAMESTATE.GAMEOVER){
+                this.gamestate = GAMESTATE.GAMEOVER;
+        } else if (this.gamestate === GAMESTATE.MENU ) return;
+        
         else {
             this.gamestate = GAMESTATE.PAUSED;
         }
